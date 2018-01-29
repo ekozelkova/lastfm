@@ -1,0 +1,15 @@
+.App {
+    margin: 40px;
+}
+
+.artist-albums {
+    display: flex;
+
+}
+
+.artist-albums .album {
+    width: 100px;
+    height: 100px;
+    background-color: cadetblue;
+    margin: 10px;
+}
