@@ -5,9 +5,8 @@ class SearchResults extends React.Component {
     render () {
         const bands = this.props.results;
         const listItems = bands.map((band) =>
-            <li>{band}</li>
+            <li><button onClick={this.props.transitToArtistScreen}>{band}</button></li>
         );
-
 
         return (
             <ul>
