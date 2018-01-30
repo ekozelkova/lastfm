@@ -1,14 +1,26 @@
 import React from 'react';
-import SearchBar from './SearchBar.js';
-//import SearchResults from './SearchResults';
-
-import './App.css';
+import SearchResults from './SearchResults.js';
+import SearchBar from "./SearchBar";
 
 class SearchScreen extends React.Component {
+    constructor() {
+        super();
+
+        this.state = {results: []}
+    }
+
+    handleSearch = () => {
+        //on click, on enter
+        setTimeout(() => {
+            this.setState({results: ["hello", "world"]});
+        }, 2000)
+    };
+
     render() {
-        return (
+        return(
             <div>
-                <SearchBar/>
+                <SearchBar onSearch={this.handleSearch}/>
+                <SearchResults results={this.state.results}/>
             </div>
         )
     }

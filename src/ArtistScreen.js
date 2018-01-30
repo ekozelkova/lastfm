@@ -5,6 +5,7 @@ class ArtistScreen extends React.Component {
     render() {
         return (
             <div>
+                <button>Назад к списку исполнителей</button>
                 <header>Альбомы Би-2</header>
 
                 <div className="artist-albums">

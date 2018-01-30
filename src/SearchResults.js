@@ -3,11 +3,15 @@ import './App.css';
 
 class SearchResults extends React.Component {
     render () {
+        const bands = this.props.results;
+        const listItems = bands.map((band) =>
+            <li>{band}</li>
+        );
+
+
         return (
             <ul>
-                <li>Би-2</li>
-                <li>Би-2 и Сплин</li>
-                <li>Би-2 и Оксимирон</li>
+                {listItems}
             </ul>
         )
     }

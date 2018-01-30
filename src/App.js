@@ -1,23 +1,47 @@
 import React, { Component } from 'react';
-import ArtistScreen from './ArtistScreen.js';
-import SearchScreen from "./SearchScreen";
-import ResultsScreen from "./ResultsScreen";
+
+import SearchScreen from "./SearchScreen.js";
+
 
 import './App.css';
+import ArtistScreen from "./ArtistScreen";
 
 
 class App extends Component {
-  render() {
-    return (
-      <div className="App">
-          <SearchScreen/>
+    constructor(props) {
+        super(props);
+        this.state = {currentScreen: 'searchResults'};
+    }
 
-          <ResultsScreen/>
+    transitToSearchScreen = () => {
+        this.setState({currentScreen: 'searchResults'})
+    };
 
-          <ArtistScreen/>
-      </div>
-    );
-  }
+    transitToArtistScreen = () => {
+      this.setState({currentScreen: 'albums'})
+    };
+
+
+
+    render() {
+        const currentScreen = this.state.currentScreen;
+        let screen = null;
+
+        if(currentScreen === 'searchResults') {
+            screen = <SearchScreen transitToArtistScreen={this.transitToArtistScreen}/>
+        } else if(currentScreen === 'albums') {
+            screen = <ArtistScreen transitToSearchScreen={this.transitToSearchScreen}/>
+        }
+
+        return (
+          <div className="App">
+
+              {screen}
+
+
+          </div>
+        );
+    }
 }
 
 export default App;

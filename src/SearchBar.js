@@ -7,7 +7,9 @@ class SearchBar extends React.Component {
             <div>
                 <span>Поиск:</span>
                 <input placeholder="Название группы"/>
-                <button>Искать</button>
+                <button
+                    onClick={this.props.onSearch}
+                >show results</button>
             </div>
         )
     }
