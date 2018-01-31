@@ -7,20 +7,21 @@ import './App.css';
 class App extends Component {
     constructor(props) {
         super(props);
-        this.state = {currentScreen: 'searchResults', results: []};
+        this.state = {currentScreen: 'searchResults', artistName: null, results: []};
     }
 
     transitToSearchScreen = () => {
         this.setState({currentScreen: 'searchResults'})
     };
 
-    transitToArtistScreen = () => {
-      this.setState({currentScreen: 'albums'});
+    transitToArtistScreen = (artistName) => {
+      this.setState({currentScreen: 'albums', artistName: artistName});
+
     };
 
     //TODO: add a comment why
     updateResults = (results) => {
-      this.setState({results: results})
+      this.setState({results: results});
     };
 
     render() {
@@ -28,9 +29,13 @@ class App extends Component {
         let screen = null;
 
         if(currentScreen === 'searchResults') {
-            screen = <SearchScreen transitToArtistScreen={this.transitToArtistScreen} updateResults={this.updateResults} results={this.state.results}/>
+            screen =
+                <SearchScreen transitToArtistScreen={this.transitToArtistScreen}
+                updateResults={this.updateResults}
+                results={this.state.results}/>
+
         } else if(currentScreen === 'albums') {
-            screen = <ArtistScreen transitToSearchScreen={this.transitToSearchScreen}/>
+            screen = <ArtistScreen transitToSearchScreen={this.transitToSearchScreen} artistName={this.state.artistName}/>
         }
 
         return (
