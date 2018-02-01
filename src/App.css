@@ -4,12 +4,18 @@
 
 .artist-albums {
     display: flex;
-
+    width: 500px;
 }
 
 .artist-albums .album {
     width: 100px;
     height: 100px;
-    background-color: cadetblue;
+    border-color: crimson;
     margin: 10px;
 }
+
+.hidden {
+    display: none;
+}
+
+/*TODO: make a focus on input*/

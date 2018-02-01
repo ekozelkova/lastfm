@@ -4,9 +4,11 @@ import './App.css';
 class ArtistScreen extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {albums: []}
+        this.state = {albums: [], listItems: []}
     }
 
+    //TODO: make a loader
+    
     componentDidMount() {
         let artistName = this.props.artistName;
         console.log(artistName);
@@ -20,22 +22,30 @@ class ArtistScreen extends React.Component {
             })
             .then((response) => {
                 //update state
-                console.log(response);
+                console.log(response.topalbums.album);
                 this.setState({albums: response.topalbums.album});
-                //console.log(this.props.id.albums);
+
+
             })
         //TODO: check for no albums
     }
 
     render() {
+
+        const listItems = this.state.albums.map((album, index) =>
+            <div className="album" key={index}>
+                <img src={album.image[2]["#text"]}/>
+            </div>
+        );
+        //TODO: make here a picture of an album
+
         return (
             <div>
                 <button onClick={this.props.transitToSearchScreen}>Назад к списку исполнителей</button>
                 <header>Альбомы {this.props.artistName}</header>
 
                 <div className="artist-albums">
-                    <div className="album"></div>
-
+                    {listItems}
                 </div>
             </div>
         )

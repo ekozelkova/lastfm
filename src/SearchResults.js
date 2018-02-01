@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 
 class SearchResults extends React.Component {
+
     render () {
         const artists = this.props.results;
         const listItems = artists.map((artist, index) =>
