@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import SearchScreen from './SearchScreen';
 import ArtistScreen from './ArtistScreen';
+import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
 
 

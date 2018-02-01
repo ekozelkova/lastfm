@@ -21,13 +21,13 @@ class SearchBar extends React.Component {
 
     render() {
         return (
-            <div>
-                <span>Поиск:</span>
-                <input type="text" value={this.state.inputValue} onChange={this.handleChange} placeholder="Название группы"/>
-                <button
-                    onClick={this.handleSubmit}
-                >show results</button>
-            </div>
+                <form className="search-form">
+                    <h5 className="search-form__header">Поиск:</h5>
+                    <input className="search-form__input" type="text" value={this.state.inputValue} onChange={this.handleChange} placeholder="Название группы"/>
+                    <button className="search-form__button btn btn-outline-dark btn-sm"
+                        onClick={this.handleSubmit}
+                    >show results</button>
+                </form>
         )
     }
 }
