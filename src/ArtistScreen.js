@@ -45,7 +45,7 @@ class ArtistScreen extends React.Component {
         else if (this.state.albums.length !== 0) {
             result = this.state.albums.map((album, index) =>
                 <div className="artist-albums__album" key={index}>
-                    <img src={album.image[2]["#text"]} alt="album cover"/>
+                    <img src={album.image[2]["#text"] || "/images/no_album_cover.png"} alt="album cover"/>
                 </div>
             );
         }
