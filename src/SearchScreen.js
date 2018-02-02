@@ -5,18 +5,19 @@ import SearchBar from "./SearchBar";
 class SearchScreen extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {results: []};
+        this.state = {results: [], hasSearched: false};
     }
 
-    //TODO: add a comment why
     updateResults = (results) => {
-        this.setState({results: results});
-        console.log(results);
+        this.setState({results: results, hasSearched: true});
     };
 
     //TODO: make a loader (disable button)
 
     handleSearch = (query) => {
+        //Checks for an empty input
+        if (query === "") return;
+
         let url = "http://ws.audioscrobbler.com/2.0/?method=artist.search&artist="
             + query
             + "&api_key=3195564c027455aa3a38e82fd6dd3e0f&format=json";
@@ -28,16 +29,15 @@ class SearchScreen extends React.Component {
             .then((response) => {
                 //update state
 
-                this.updateResults(response.results.artistmatches.artist)
+                this.updateResults(response.results.artistmatches.artist);
             });
-        //TODO: check for an empty field
     };
 
     render() {
         return(
             <div>
                 <SearchBar onSearch={this.handleSearch}/>
-                <SearchResults results={this.state.results} transitToArtistScreen={this.props.transitToArtistScreen}/>
+                <SearchResults results={this.state.results} hasSearched={this.state.hasSearched} transitToArtistScreen={this.props.transitToArtistScreen}/>
             </div>
         )
     }

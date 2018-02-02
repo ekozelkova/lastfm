@@ -8,7 +8,7 @@ import './App.css';
 class App extends Component {
     constructor(props) {
         super(props);
-        this.state = {currentScreen: 'albums', artistName: 'muse'};
+        this.state = {currentScreen: 'searchResults', artistName: ''};
     }
 
     transitToSearchScreen = () => {
