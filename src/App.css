@@ -1,6 +1,6 @@
 .App {
     margin: 40px;
-    padding: 10px;
+
 }
 
 .search-form {
@@ -8,11 +8,11 @@
 }
 
 .search-form__header {
-    margin-right: 10px;
+    margin-left: 10px;
 }
 
 .search-form__input {
-    margin-right: 10px;
+    margin: 0 10px;
 }
 
 .search-form__button {
@@ -20,14 +20,14 @@
 }
 
 .search-results {
-    padding-left: 15px;
+    padding-left: 10px;
 }
 
 .search-results__item {
-    margin: 2px 0;
+    margin-left: 15px;
 }
 
-.search-results_no-items {
+.search-alert {
     list-style-type: none;
 }
 
@@ -36,7 +36,7 @@
 }
 
 .artist-screen__header {
-    margin: 10px;
+    margin: 0 0 10px 10px;
 }
 
 .artist-screen__back-button {
@@ -46,15 +46,13 @@
 .artist-albums {
     display: flex;
     flex-wrap: wrap;
-
+    padding: 10px 0 0 10px;
 }
 
 .artist-albums__album {
-    padding: 10px;
+    padding: 0 15px 15px 0;
 }
 
 .hidden {
     display: none;
 }
-
-/*TODO: make a focus on input*/

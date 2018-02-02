@@ -8,7 +8,10 @@ import './App.css';
 class App extends Component {
     constructor(props) {
         super(props);
-        this.state = {currentScreen: 'searchResults', artistName: ''};
+        this.state = {
+            currentScreen: 'searchResults',
+            artistName: ''
+        };
     }
 
     transitToSearchScreen = () => {
@@ -22,8 +25,6 @@ class App extends Component {
 
     render() {
         const currentScreen = this.state.currentScreen;
-        let isHidden = (currentScreen === 'searchResults') ? '' : 'hidden';
-        console.log(isHidden);
 
         let artistScreen = null;
         if (currentScreen === 'albums') {

@@ -2,18 +2,19 @@ import React from 'react';
 import './App.css';
 
 class SearchResults extends React.Component {
-
     render () {
         const artists = this.props.results;
-        console.log(artists);
-        let listItems;
+        let result;
 
-        //Checks for no artists
         if (this.props.hasSearched) {
-            if (artists.length === 0) {
-                listItems = <li className="search-results_no-items">Исполнители не найдены</li>
-            } else {
-                listItems = artists.map((artist, index) =>
+            if (this.props.isLoading) {
+                result = <li className="search-alert">Загрузка...</li>
+            }
+            else if (artists.length === 0) {
+                result = <li className="search-alert">Исполнители не найдены</li>
+            }
+            else {
+                result = artists.map((artist, index) =>
                     <li className="search-results__item" key={index}>
                         <a href="#" onClick={() => this.props.transitToArtistScreen(artist.name)}>
                             {artist.name}
@@ -25,7 +26,7 @@ class SearchResults extends React.Component {
 
         return (
             <ul className="search-results">
-                {listItems}
+                {result}
             </ul>
         );
     }

@@ -11,14 +11,9 @@ class ArtistScreen extends React.Component {
         }
     }
 
-    //TODO: make a loader
-
     componentDidMount() {
-
-        let artistName = this.props.artistName;
-        console.log(artistName);
         let url = "http://ws.audioscrobbler.com/2.0/?method=artist.gettopalbums&artist="
-            + artistName
+            + this.props.artistName
             + "&api_key=3195564c027455aa3a38e82fd6dd3e0f&format=json";
 
         fetch(url)
@@ -26,8 +21,6 @@ class ArtistScreen extends React.Component {
                 return response.json();
             })
             .then((response) => {
-                //update state
-                console.log(response.topalbums.album);
                 this.setState({
                     albums: response.topalbums.album,
                     isLoading: false
@@ -37,10 +30,8 @@ class ArtistScreen extends React.Component {
 
     render() {
         let result;
-
-        //TODO: Review check for no albums
         if (this.state.isLoading) {
-            result = <p>Загрузка...</p>
+            result = <p className="search-alert">Загрузка...</p>
         }
         else if (this.state.albums.length !== 0) {
             result = this.state.albums.map((album, index) =>
@@ -50,12 +41,16 @@ class ArtistScreen extends React.Component {
             );
         }
         else {
-            result = <p>У этого исполнителя нет альбомов</p>;
+            result = <p className="search-alert">У этого исполнителя нет альбомов</p>;
         }
 
         return (
             <div className="artist-screen">
-                <button type="button" className="artist-screen__back-button btn btn-outline-dark btn-sm" onClick={this.props.transitToSearchScreen}>Назад</button>
+                <button
+                    type="button"
+                    className="artist-screen__back-button btn btn-outline-dark btn-sm"
+                    onClick={this.props.transitToSearchScreen}>Назад</button>
+
                 <h5 className="artist-screen__header">Альбомы {this.props.artistName}</h5>
                 <div className="artist-albums">
                     {result}
